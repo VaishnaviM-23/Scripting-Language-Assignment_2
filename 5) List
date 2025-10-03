@@ -1,0 +1,13 @@
+puts -nonewline "Enter list items separated by space: "
+flush stdout
+gets stdin items
+set list1 [split $items " "]
+set list2 {}
+
+puts "List1: $list1"
+puts "Moving first item to List2..."
+lappend list2 [lindex $list1 0]
+set list1 [lrange $list1 1 end]
+
+puts "List1: $list1"
+puts "List2: $list2"
