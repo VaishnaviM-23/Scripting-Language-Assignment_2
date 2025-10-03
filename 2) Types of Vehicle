@@ -1,0 +1,45 @@
+class Vehicle
+  def initialize(mileage, fuel)
+    @mileage = mileage
+    @fuel = fuel
+  end
+
+  def display
+    puts "Mileage: #{@mileage}, Fuel: #{@fuel}"
+  end
+end
+
+class Car < Vehicle
+  def feature
+    puts "Car has AC and stereo"
+  end
+end
+
+class Truck < Vehicle
+  def feature
+    puts "Truck carries heavy loads"
+  end
+end
+
+class Motorcycle < Vehicle
+  def feature
+    puts "Motorcycle is lightweight"
+  end
+end
+
+print "Enter vehicle type (car/truck/motorcycle): "
+type = gets.chomp.downcase
+print "Enter mileage: "
+m = gets.to_i
+print "Enter fuel type: "
+f = gets.chomp
+
+v = case type
+when "car" then Car.new(m,f)
+when "truck" then Truck.new(m,f)
+when "motorcycle" then Motorcycle.new(m,f)
+else Vehicle.new(m,f)
+end
+
+v.display
+v.feature if v.respond_to?(:feature)
