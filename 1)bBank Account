@@ -1,0 +1,39 @@
+class BankAccount
+  def initialize(balance=0)
+    @balance = balance
+  end
+
+  def deposit(amount)
+    if amount > 0
+      @balance += amount
+    else
+      puts "Invalid deposit amount"
+    end
+  end
+
+  def withdraw(amount)
+    if amount > 0 && amount <= @balance
+      @balance -= amount
+    else
+      puts "Invalid withdrawal"
+    end
+  end
+
+  def check_balance
+    @balance
+  end
+end
+
+print "Enter initial balance: "
+initial = gets.to_i
+acc = BankAccount.new(initial)
+
+print "Enter deposit amount: "
+d = gets.to_i
+acc.deposit(d)
+
+print "Enter withdraw amount: "
+w = gets.to_i
+acc.withdraw(w)
+
+puts "Final Balance: #{acc.check_balance}"
